@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velox Suite - Professional Dashboard</title>
+    <meta name="description" content="Professional dashboard application with comprehensive business management tools">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <h2>Loading Velox Suite...</h2>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container" style="display: none;">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>Velox Suite</span>
+                </div>
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div class="menu-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li><a href="#" data-page="dashboard" class="menu-item active">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a></li>
+                        <li><a href="#" data-page="analytics" class="menu-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a></li>
+                        <li><a href="#" data-page="projects" class="menu-item">
+                            <i class="fas fa-folder"></i>
+                            <span>Projects</span>
+                        </a></li>
+                        <li><a href="#" data-page="team" class="menu-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team</span>
+                        </a></li>
+                        <li><a href="#" data-page="calendar" class="menu-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Calendar</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="#" data-page="messages" class="menu-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Messages</span>
+                            <span class="badge">12</span>
+                        </a></li>
+                        <li><a href="#" data-page="files" class="menu-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>File Manager</span>
+                        </a></li>
+                        <li><a href="#" data-page="tasks" class="menu-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Task Manager</span>
+                        </a></li>
+                        <li><a href="#" data-page="timetracker" class="menu-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Time Tracker</span>
+                        </a></li>
+                        <li><a href="#" data-page="reports" class="menu-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>Account</h3>
+                    <ul>
+                        <li><a href="#" data-page="settings" class="menu-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button id="mobileMenuToggle" class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search... (Ctrl+K)" id="searchInput">
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="header-btn theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="dropdown">
+                        <button class="header-btn notification-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">8</span>
+                        </button>
+                        <div class="dropdown-menu" id="notificationDropdown">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <button class="mark-all-read">Mark all read</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <!-- Notifications will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="header-btn user-btn" id="userBtn">
+                            <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=64&h=64&dpr=2" alt="User Avatar" class="user-avatar">
+                            <span>John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="userDropdown">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content Container -->
+            <div id="pageContent" class="page-content">
+                <!-- Dashboard content will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Command Palette -->
+    <div id="commandPalette" class="command-palette">
+        <div class="command-palette-content">
+            <div class="command-input-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Type a command or search..." id="commandInput">
+            </div>
+            <div class="command-results" id="commandResults">
+                <!-- Command results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/notifications.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
